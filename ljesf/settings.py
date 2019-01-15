@@ -126,6 +126,6 @@ LOG_FORMAT = '%(asctime)s-%(name)s-%(levelname)s: %（message)s'
 #数据库配置
 MYSQL_HOST = '127.0.0.1'
 MYSQL_PORT = 3306
-MYSQL_USER = 'banquan'
-MYSQL_PASSWD = '12345'
+MYSQL_USER = '***'
+MYSQL_PASSWD = '***'
 MYSQL_DBNAME = 'lianjia_ershoufang'
