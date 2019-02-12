@@ -1,6 +1,6 @@
 # scrapy-lianjia_ershoufang-v190105
 
-配置：Anaconda3，scrapy-1.5,python-3.6,mysql-8.0。
+环境：Anaconda3，scrapy-1.5,python-3.6,mysql-8.0。
 
 描述： 
 1、尽可能获取lianjia二手房的大部分房源数据（包含基本信息+交易信息），网站动态所示数量为六万左右，spider最后获取数量相比无较大出入；
