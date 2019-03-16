@@ -62,7 +62,7 @@ class MysqlPipeline(object):
     #写入数据库语句
     def sql_insert(self,cursor,item):
         insert_sql = '''
-                            insert into chengdu_20190315 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,\
+                            insert into chengdu_20190316 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,\
                             %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,\
                             %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                     '''

@@ -25,7 +25,7 @@ def close_db(ljdb):
 def create_table(lj_cur):
 	
 	try:
-		sql_create = '''create table chengdu_20190315 (houselink varchar(255),houseID varchar(255),housename varchar(255),time_build varchar(255),totalprice varchar(255),
+		sql_create = '''create table chengdu_20190316 (houselink varchar(255),houseID varchar(255),housename varchar(255),time_build varchar(255),totalprice varchar(255),
 						unitprice varchar(255),community varchar(255),district varchar(255),block varchar(255),road varchar(255),supplement varchar(255),
 						type_house varchar(255),area_gross varchar(255),area_real varchar(255),orientation varchar(255),decoration varchar(255),own_time varchar(255),
 						floor varchar(255),layout varchar(255),type_building varchar(255),material varchar(255),elevator_num varchar(255),
@@ -44,7 +44,7 @@ def create_table(lj_cur):
 def drop_table(lj_cur):
 	
 	try:
-		lj_cur.execute('drop table chengdu_20190315')
+		lj_cur.execute('drop table chengdu_20190316')
 		print('删除表格成功！')
 	except:
 		print('删除表格失败！')
