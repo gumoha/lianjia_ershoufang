@@ -1,32 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-import codecs,json,time,pymysql
-import pymysql.cursors
-from twisted.enterprise import adbapi
-
-#写入json文件
-class LjesfPipeline(object):
-
-    def open_spider(self,spider):
-        #以运行时间命名json文件
-        today = time.strftime('%Y%m%d-%H-%M',time.localtime(time.time()))
-        filen = "/home/gumoha/文档/Scrapy/ljesf/ershoufang_json/ChengDu-(%s).json"%today
-        self.file = codecs.open(filen,'w')
-
-    def close_spider(self,spider):
-        self.file.close()
-
-    def process_item(self, item, spider):
-        line = json.dumps(dict(item),ensure_ascii=False) + '\n'
-        self.file.write(line)
-
-        return item
-
-#twisted异步写入数据库
+#写入数据库
 class MysqlPipeline(object):
 
     def __init__(self,dbpool):
@@ -62,7 +34,7 @@ class MysqlPipeline(object):
     #写入数据库语句
     def sql_insert(self,cursor,item):
         insert_sql = '''
-                            insert into chengdu_20190315 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,\
+                            insert into test01 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,\
                             %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,\
                             %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                     '''
@@ -81,4 +53,4 @@ class MysqlPipeline(object):
     #错误处理
     def handle_error(self,failure):
         if failure:
-            print('写入数据库错误：%s'%failure)
+            print(failure)

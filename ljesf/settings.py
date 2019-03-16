@@ -94,38 +94,35 @@ ROBOTSTXT_OBEY = False
 
 ITEM_PIPELINES = {
     'ljesf.pipelines.LjesfPipeline': 300,
-    'ljesf.pipelines.MysqlPipeline': 500,
+    'ljesf.pipelines.MysqlPipeline': 600,
 }
 
+#启用随机更换User-Agent,Proxy
 DOWNLOADER_MIDDLEWARES = {
-    'ljesf.middlewares.LjesfUAMiddleware': 100,
+    'ljesf.middlewares.UserAgentMiddleware': 100,
+    #'ljesf.middlewares.ProxyMiddleware':100,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 }
 
-DEFAULT_REQUEST_HEADERS = {
-   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+DOWNLOAD_TIMEOUT = 200
 
-   'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en',
-}
-
-DOWNLOAD_DELAY=1
+DOWNLOAD_DELAY=1.25
 COOKIES_ENABLED = False
-CLOSESPIDER_ITEMCOUNT =62000
+CLOSESPIDER_ITEMCOUNT =80000
 
 #Log日志设置
 today = time.strftime('%Y-%m-%d-%H',time.localtime(time.time()))
-log_path = "F:\Scrapy\lianjia_ershoufang\logger_info\ChengDu-log-(%s).json"%today
+log_path = "/home/gumoha/文档/Scrapy/ljesf/logger_info/ChengDu-log-(%s).json"%today
 
 LOG_ENABLED =True
 LOG_ENCODING ='utf-8'
 LOG_LEVEL = 'WARNING'
 LOG_FILE = log_path
-LOG_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
-LOG_FORMAT = '%(asctime)s-%(name)s-%(levelname)s: %（message)s'
 
 
 #数据库配置
 MYSQL_HOST = '127.0.0.1'
 MYSQL_PORT = 3306
-MYSQL_USER = '***'
-MYSQL_PASSWD = '***'
+MYSQL_USER = 'gumo'
+MYSQL_PASSWD = '12345'
 MYSQL_DBNAME = 'lianjia_ershoufang'

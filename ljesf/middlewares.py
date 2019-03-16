@@ -6,7 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-import random
+import random,json
 
 
 class LjesfSpiderMiddleware(object):
@@ -105,9 +105,9 @@ class LjesfDownloaderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-class LjesfUAMiddleware(object):
+class UserAgentMiddleware(object):
     def __init__(self):
-        # user_agent
+        # 随机获取更换user_agent
         self.hds_list = [
             'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6', \
             'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11', \

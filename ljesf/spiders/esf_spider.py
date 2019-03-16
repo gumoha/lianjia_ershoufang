@@ -24,7 +24,7 @@ class ErShouFang(scrapy.Spider):
             time.sleep(random.choice(range(10)))
             print('获取大区域链接', dinums, di_url)
             dinums +=1
-            yield response.follow(di_url,callback=self.parse_block)
+            yield scrapy.Request(di_url,callback=self.parse_block)
 
     def parse_block(self,response):
         url = 'https://cd.lianjia.com'
@@ -37,7 +37,7 @@ class ErShouFang(scrapy.Spider):
             time.sleep(random.choice(range(10)))
             print('获取区域——街区链接', blnums, bl_url)
             blnums += 1
-            yield response.follow(bl_url, callback=self.parse_pg)
+            yield scrapy.Request(bl_url, callback=self.parse_pg)
 
     def parse_pg(self,response):
         pages =(int(response.xpath('//div[@class="resultDes clear"]/h2/span/text()').extract_first().strip()) // 30) +2
@@ -47,13 +47,13 @@ class ErShouFang(scrapy.Spider):
             next_url = pg_url + str(n)
             time.sleep(random.choice(range(10)))
 
-            yield response.follow(next_url,callback=self.parse_house)
+            yield scrapy.Request(next_url,callback=self.parse_house)
 
     def parse_house(self,response):
         hs = response.xpath('//li[@class="clear LOGCLICKDATA"]/div[@class="info clear"]/div[@class="title"]/a/@href').extract()
         for h in hs:
             time.sleep(random.choice(range(10)))
-            yield response.follow(h,callback=self.parse_item)
+            yield scrapy.Request(h,callback=self.parse_item)
 
 
     def parse_item(self, response):
