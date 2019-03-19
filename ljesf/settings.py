@@ -104,7 +104,7 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 }
 
-DOWNLOAD_TIMEOUT = 200
+DOWNLOAD_TIMEOUT = 120
 
 DOWNLOAD_DELAY=1.25
 COOKIES_ENABLED = False
@@ -112,7 +112,7 @@ CLOSESPIDER_ITEMCOUNT =80000
 
 #Log日志设置
 today = time.strftime('%Y-%m-%d-%H',time.localtime(time.time()))
-log_path = "/home/gumoha/文档/Scrapy/ljesf/logger_info/ChengDu-log-(%s).json"%today
+log_path = "/home/gumoha/文档/Scrapy/lianjia_ershoufang/logger_info/ChengDu-log-(%s).json"%today
 
 LOG_ENABLED =True
 LOG_ENCODING ='utf-8'

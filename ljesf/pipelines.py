@@ -14,7 +14,7 @@ class LjesfPipeline(object):
     def open_spider(self,spider):
         #以运行时间命名json文件
         today = time.strftime('%Y%m%d-%H-%M',time.localtime(time.time()))
-        filen = "/home/gumoha/文档/Scrapy/ljesf/ershoufang_json/ChengDu-(%s).json"%today
+        filen = "/home/gumoha/文档/Scrapy/lianjia_ershoufang/ershoufang_json/ChengDu-(%s).json"%today
         self.file = codecs.open(filen,'w')
 
     def close_spider(self,spider):
